@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    min-height: 100%;
+    background-color: #000;
+    font-family: 'JetBrains Mono', monospace;
+    color: #fff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    pointer-events: auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ff5500;
+}
+
+nav a {
+    color: #ff8800;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover {
+    color: #ffaa00;
+    text-shadow: 0 0 8px #ffaa00;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 4rem;
+    pointer-events: auto;
+}
+
+.hero {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    letter-spacing: -2px;
+}
+
+.features h2,
+.showcase h2,
+.about h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    letter-spacing: -1px;
+    color: #ff5500;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.card {
+    border: 1px solid #ff3300;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    border-color: #ff8800;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 85, 0, 0.4);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #ff5500;
+}
+
+.card p {
+    color: #cc6600;
+    line-height: 1.5;
+}
+
+.about p {
+    font-size: 1.2rem;
+    color: #cc6600;
+    max-width: 800px;
+    line-height: 1.8;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    color: #cc6600;
+}
+
+.cta {
+    background: transparent;
+    border: 2px solid #ff5500;
+    color: #ff5500;
+    padding: 1rem 2.5rem;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.cta:hover {
+    background: #ff5500;
+    color: #000;
+    box-shadow: 0 0 15px #ff5500;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cta-secondary {
+    background: transparent;
+    border: 1px dashed #ff5500;
+    color: #ff8800;
+    padding: 1rem 2.5rem;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.cta-secondary:hover {
+    background: rgba(255, 85, 0, 0.1);
+    color: #fff;
+    border-style: solid;
+}
+
+.card-icon {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ff8800;
+    margin-bottom: 1rem;
+    font-family: monospace;
+}
+
+.showcase-container {
+    width: 100%;
+    max-width: 800px;
+}
+
+.showcase-item {
+    background: rgba(10, 5, 0, 0.7);
+    border: 1px solid #ff3300;
+    border-radius: 4px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.showcase-header {
+    background: #ff3300;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.showcase-header .dot {
+    width: 12px;
+    height: 12px;
+    background: #000;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.showcase-header .title {
+    margin-left: auto;
+    color: #000;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.showcase-body {
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: #ffaa00;
+    line-height: 1.6;
+}
+
+.blinking-cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.showcase-footer {
+    border-top: 1px dashed #ff3300;
+    padding: 1rem 2rem;
+    text-align: right;
+}
+
+.showcase-footer p {
+    color: #ff5500;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.showcase-footer span {
+    color: #fff;
+}
+
+.stats {
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    padding: 4rem !important;
+    border-top: 1px solid #ff3300;
+    border-bottom: 1px solid #ff3300;
+    background: rgba(255, 51, 0, 0.05);
+    min-height: auto !important;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-box h4 {
+    color: #ff8800;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.footer {
+    width: 100%;
+    padding: 2rem 4rem;
+    border-top: 1px solid #333;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    color: #ff5500;
+    font-weight: 800;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: #cc6600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 85, 0, 0.05), rgba(255, 170, 0, 0.02), rgba(255, 51, 0, 0.05));
+    background-size: 100% 4px, 6px 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
